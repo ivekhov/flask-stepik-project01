@@ -49,7 +49,12 @@ def show_deparutes(departure):
 
 @app.route('/tours/<id>/')
 def show_tours(id):
-    return render_template('tour.html')
+    try:
+        tour = tours[int(id)]
+        return render_template('tour.html', tours=tours, idx=int(id),
+                               departures=departures)
+    except:
+        return render_not_found()
 
 
 @app.route('/data')
