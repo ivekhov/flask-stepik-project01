@@ -9,7 +9,10 @@ departures = data.departures
 
 @app.route('/')
 def main():
-    return render_template('index.html')
+    try:
+        return render_template('index.html', tours=tours)
+    except:
+        return render_not_found()
 
 
 @app.route('/departures/<departure>/')
